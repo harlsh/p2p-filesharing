@@ -19,9 +19,11 @@ public class PeerServer implements Runnable{
     private ObjectInputStream in;
     private ObjectOutputStream out;
 
+    private Integer peerId;
     private Integer portNumber;
 
-    PeerServer(Integer portNumber) {
+    PeerServer(Integer peerId,Integer portNumber) {
+        this.peerId = peerId;
         this.portNumber = portNumber;
     }
 
@@ -40,7 +42,7 @@ public class PeerServer implements Runnable{
             HandshakeMessage message = (HandshakeMessage) in.readObject();
             System.out.println("Receive handshake message: " + message + " from client ");
 
-            Object msg1 = new HandshakeMessage(1002);
+            Object msg1 = new HandshakeMessage(peerId);
             this.out.writeObject(msg1);
             System.out.println("Send handshake message: " + msg1 + " back to client ");
 

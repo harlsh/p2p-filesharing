@@ -12,6 +12,16 @@ public class PeerClient implements Runnable{
     private ObjectOutputStream out;
     private ObjectInputStream in;
 
+    private Integer peerId;
+
+    public PeerClient(Integer peerId) {
+        this.peerId = peerId;
+    }
+
+    public PeerClient() {
+        this.peerId = 2000;
+    }
+
     @SneakyThrows
     public void startConnection(String ip, int port) {
         clientSocket = new Socket(ip, port);
@@ -42,8 +52,9 @@ public class PeerClient implements Runnable{
     @Override
     public void run() {
         this.startConnection("127.0.0.1", 8888);
-        Object msg1 = this.sendMessage(new HandshakeMessage(1001));
-        //System.out.println("stop connection");
+        HandshakeMessage msg1 = (HandshakeMessage) this.sendMessage(new HandshakeMessage(peerId));
+        Integer serverPeerId = msg1.getPeerId();
+        // todo: check if the serverPeerId is the expected one.
         this.stopConnection();
     }
 }
