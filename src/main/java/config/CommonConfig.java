@@ -10,4 +10,5 @@ public class CommonConfig {
     private String fileName;
     private Long fileSize;
     private Long pieceSize;
+
 }
