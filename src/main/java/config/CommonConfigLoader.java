@@ -3,21 +3,22 @@ package config;
 import lombok.Data;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 @Data
 public class CommonConfigLoader {
-    File configFile;
+    InputStream configFile;
     CommonConfig commonConfig;
 
     public CommonConfigLoader(String fileName) {
         ClassLoader classLoader = getClass().getClassLoader();
-        configFile = new File(classLoader.getResource(fileName).getFile());
+        classLoader.getResourceAsStream(fileName);
+        configFile = classLoader.getResourceAsStream(fileName);
         commonConfig = new CommonConfig();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(configFile));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(configFile));
             String line = reader.readLine();
             String value = line.split(" ")[1];
             commonConfig.setNumberOfPreferredNeighbors(Integer.parseInt(value));

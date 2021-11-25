@@ -1,12 +1,13 @@
 package messages;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 
 import java.util.BitSet;
 
 @Data
-
+@AllArgsConstructor
 public class Message {
     @NonNull
     Integer messageLength;
@@ -22,4 +23,9 @@ public class Message {
         System.out.println("Message length=" + messageLength);
         this.messagePayload = bitField.toByteArray();
     }
+
+    Message(MessageType messageType) {
+        this.messageType = messageType;
+    }
+
 }

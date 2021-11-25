@@ -11,6 +11,7 @@ public class PeerProcess {
     public static void main(String[] args) {
 //        Peer peer = new Peer();
 //        peer.runServer(8888);
+        System.out.println("I'm alive");
         CommonConfigLoader commonConfigLoader = new CommonConfigLoader("Common.cfg");
         System.out.println(commonConfigLoader.getCommonConfig());
         PeerInfoLoader peerInfoLoader = new PeerInfoLoader("PeerInfo.cfg");
