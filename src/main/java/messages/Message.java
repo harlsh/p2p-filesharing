@@ -4,11 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NonNull;
 
+import java.io.Serializable;
 import java.util.BitSet;
 
 @Data
 @AllArgsConstructor
-public class Message {
+public class Message implements Serializable {
     @NonNull
     Integer messageLength;
     @NonNull
@@ -20,7 +21,6 @@ public class Message {
         this.messageLength = messageLength;
         this.messageType = MessageType.BITFIELD;
         bitField.set(0, bitField.size());
-        System.out.println("Message length=" + messageLength);
         this.messagePayload = bitField.toByteArray();
     }
 

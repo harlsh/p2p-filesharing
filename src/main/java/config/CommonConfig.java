@@ -8,6 +8,6 @@ public class CommonConfig {
     private Integer unchockingInterval;
     private Integer optimisticUnchockingInterval;
     private String fileName;
-    private Long fileSize;
-    private Long pieceSize;
+    private Integer fileSize;
+    private Integer pieceSize;
 }

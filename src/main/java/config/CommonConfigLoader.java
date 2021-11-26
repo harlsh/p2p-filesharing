@@ -33,10 +33,10 @@ public class CommonConfigLoader {
             commonConfig.setFileName(value);
             line = reader.readLine();
             value = line.split(" ")[1];
-            commonConfig.setFileSize(Long.parseLong(value));
+            commonConfig.setFileSize(Integer.parseInt(value));
             line = reader.readLine();
             value = line.split(" ")[1];
-            commonConfig.setPieceSize(Long.parseLong(value));
+            commonConfig.setPieceSize(Integer.parseInt(value));
             System.out.println("Parsed the " + fileName + " successfully.");
             reader.close();
         } catch (IOException e) {
